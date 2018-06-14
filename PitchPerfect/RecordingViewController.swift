@@ -15,7 +15,8 @@ class RecordingViewController: UIViewController,AVAudioRecorderDelegate {
     var audioRecorder : AVAudioRecorder!
     var  audioFileName: URL?
     @IBOutlet weak var recordButton : UIButton!
-   @IBOutlet weak var stopButton : UIButton!
+    @IBOutlet weak var stopButton : UIButton!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -59,7 +60,7 @@ class RecordingViewController: UIViewController,AVAudioRecorderDelegate {
     
     @IBAction func stopRecording(_ sender: Any){
         audioRecorder.stop()
-        performSegue(withIdentifier: "showSounds", sender: sender)
+      
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -69,12 +70,13 @@ class RecordingViewController: UIViewController,AVAudioRecorderDelegate {
         soundsViewController.audioFileName = self.audioFileName
     }
     
-    func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
-        
+
+    public func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        self.performSegue(withIdentifier: "showSounds",sender:self)
     }
-    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        
-    }
+    
+    
+   
     
 }
 
