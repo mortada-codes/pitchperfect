@@ -53,6 +53,7 @@
                     <navigationItem key="navigationItem" id="tyo-y0-cgA"/>
                     <connections>
                         <outlet property="recordButton" destination="uM8-GG-GOX" id="BJC-Mf-LiO"/>
+                        <outlet property="recordingLabel" destination="3JW-oV-Nfk" id="9J0-44-dA0"/>
                         <outlet property="stopButton" destination="AbL-R4-ROL" id="RAM-Sq-hao"/>
                         <segue destination="LWt-ZW-50z" kind="show" identifier="showSounds" id="Mux-i7-tBx"/>
                     </connections>
@@ -189,7 +190,13 @@
                         <viewLayoutGuide key="safeArea" id="zpj-Sj-Qff"/>
                     </view>
                     <connections>
+                        <outlet property="btnChipmunks" destination="Qxb-TH-fjE" id="pyv-cH-RNC"/>
+                        <outlet property="btnEcho" destination="zEc-v0-R4R" id="zIu-Bw-0g6"/>
+                        <outlet property="btnFast" destination="6Z1-xv-7j9" id="kx2-rH-YYu"/>
                         <outlet property="btnPause" destination="MbE-9x-shU" id="LKA-Iv-LA7"/>
+                        <outlet property="btnReverb" destination="6oK-Yi-357" id="h6d-Mf-0lU"/>
+                        <outlet property="btnVader" destination="Zyv-PV-W5B" id="UYS-jc-b9c"/>
+                        <outlet property="btnslow" destination="r6h-51-UmB" id="De6-3O-8ig"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ruT-6d-EQs" userLabel="First Responder" sceneMemberID="firstResponder"/>

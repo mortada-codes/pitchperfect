@@ -21,62 +21,84 @@ class SoundViewController:UIViewController, AVAudioPlayerDelegate{
     var audioFileName : URL?
     @IBOutlet weak var btnPause: UIButton!
     
+    @IBOutlet weak var btnslow: UIButton!
     
+    @IBOutlet weak var btnFast: UIButton!
     
+    @IBOutlet weak var btnReverb: UIButton!
+    @IBOutlet weak var btnChipmunks: UIButton!
+    @IBOutlet weak var btnEcho: UIButton!
+    @IBOutlet weak var btnVader: UIButton!
     override func viewDidLoad() {
         print("init soundsViewController\(String(describing: self.audioFileName))")
         prepareAudioPlayer(url: self.audioFileName!)
-        configUI()
+        
     }
     
   
     @IBAction func playAsReverb(_ sender: Any) {
-         self.stopAudio()
+        
+         self.enablsControls(enable: false)
         playSound(reverb:true)
+       
     }
     @IBAction func playAsEcho(_ sender: Any) {
-         self.stopAudio()
+        
+         self.enablsControls(enable: false)
         playSound(echo: true)
+        
     }
     
     @IBAction func playAsChipmunk(_ sender: Any) {
-        self.stopAudio()
+      
+         self.enablsControls(enable: false)
         playSound(pitch: 1000)
+      
     }
     @IBAction func playAsSlow(_ sender: Any) {
-         self.stopAudio()
+       
+         self.enablsControls(enable: false)
         playSound(rate: 0.5)
+        
     }
     @IBAction func playAsFast(_ sender: Any) {
-         self.stopAudio()
+        
+        self.enablsControls(enable: false)
         playSound(rate:1.5)
+        
+        
     }
     @IBAction func playAsDarthvader(_ sender: UIButton) {
-         self.stopAudio()
+        
+        self.enablsControls(enable: false)
         playSound(pitch: -1000)
+        
     }
     @IBAction func pausePlayer(_ sender: Any) {
      
         if (audioPlayerNode?.isPlaying == true){
             self.stopAudio()
+        configUI( isPlay: false)
         }else{
             self.playSound()
+            enablsControls(enable: false)
+        configUI( isPlay: true)
         }
-        configUI()
+       
     }
     
-    private func configUI(){
-      
-        if  audioPlayerNode?.isPlaying == true{
-                      
-            let image  = UIImage(named: "play_active")
-            btnPause.setImage(image, for: UIControlState.normal)
-        }else{
-            let image  = UIImage(named: "pause-active")
-            btnPause.setImage(image, for: UIControlState.normal)
+    private func configUI( isPlay: Bool){
+        if isPlay == true {
+             let image  = UIImage(named: "play_active")
            
-        
+            btnPause.setImage(image, for: .normal)
+            
+        }else {
+            let image  = UIImage(named: "pause-active")
+            btnPause.setImage(image, for: .normal)
+            
         }
+       
     }
     
     private func prepareAudioPlayer( url:URL){
@@ -90,6 +112,15 @@ class SoundViewController:UIViewController, AVAudioPlayerDelegate{
         
     }
     
+    
+    private func enablsControls(enable:Bool  = true ){
+        btnEcho.isEnabled  = enable
+        btnFast.isEnabled  = enable
+        btnslow.isEnabled = enable
+        btnVader.isEnabled = enable
+        btnReverb.isEnabled = enable
+        btnChipmunks.isEnabled = enable
+    }
     private func showAlert(title:String?, message:String?) {
         let alert = UIAlertController( title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: title, style: .default, handler: nil))
@@ -155,6 +186,7 @@ class SoundViewController:UIViewController, AVAudioPlayerDelegate{
             print(error)
         }
             audioPlayerNode.play()
+        configUI(isPlay: true)
     }
     
     
@@ -163,34 +195,26 @@ class SoundViewController:UIViewController, AVAudioPlayerDelegate{
             audioEngine.connect(nodes[x], to: nodes[x+1], format: audioFile.processingFormat)
         }
     }
-    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
-        
-        
-    }
+   
     
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        
-    }
+  
     
     @objc func stopAudio(){
+        enablsControls()
         if let audioPlayerNode = self.audioPlayerNode {
             audioPlayerNode.stop()
         }
         if let audioEngine = self.audioEngine{
             audioEngine.stop()
+            audioEngine.reset()
         }
         if let timer = self.timer{
             timer.invalidate()
         }
-        configUI()
+        configUI(isPlay: false)
     }
     
-//    private func getFileUrl(fileName file:String)->URL{
-//        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-//        let documentsDirectory = paths[0]
-//       return documentsDirectory.appendingPathComponent(file)
-//    }
-    
+
     @IBAction func newRecording(_ sender: Any) {
       self.navigationController?.popViewController(animated: true)
     }
