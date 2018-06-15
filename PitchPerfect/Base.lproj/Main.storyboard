@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Wk-fa-5g6">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,24 +15,28 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="RecordingViewController" customModule="PitchPerfect" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uM8-GG-GOX">
-                                <rect key="frame" x="137" y="293.5" width="100" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uM8-GG-GOX">
+                                <rect key="frame" x="190" y="110" width="100" height="100"/>
                                 <state key="normal" image="mic"/>
                                 <connections>
                                     <action selector="recording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ZK-Bt-KeS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JW-oV-Nfk">
-                                <rect key="frame" x="166" y="414" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="TAP TO RECORD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3JW-oV-Nfk">
+                                <rect key="frame" x="175.5" y="230" width="129.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbL-R4-ROL">
-                                <rect key="frame" x="137" y="442" width="100" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbL-R4-ROL">
+                                <rect key="frame" x="215" y="258.5" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="N5C-ZH-tcR"/>
+                                    <constraint firstAttribute="height" constant="50" id="nWS-2D-62p"/>
+                                </constraints>
                                 <state key="normal" image="stop_recording"/>
                                 <connections>
                                     <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hzL-17-vlt"/>
@@ -41,12 +45,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="3JW-oV-Nfk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3PQ-SD-jAo"/>
                             <constraint firstItem="uM8-GG-GOX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="3rD-C2-tfA"/>
-                            <constraint firstItem="3JW-oV-Nfk" firstAttribute="top" secondItem="uM8-GG-GOX" secondAttribute="bottom" constant="20.5" id="8nT-Va-GYe"/>
-                            <constraint firstItem="AbL-R4-ROL" firstAttribute="centerX" secondItem="3JW-oV-Nfk" secondAttribute="centerX" id="Scw-Ss-Ii4"/>
+                            <constraint firstItem="AbL-R4-ROL" firstAttribute="centerX" secondItem="uM8-GG-GOX" secondAttribute="centerX" id="OPT-Bk-RXM"/>
+                            <constraint firstItem="3JW-oV-Nfk" firstAttribute="top" secondItem="uM8-GG-GOX" secondAttribute="bottom" constant="20" id="YWm-xU-gEa"/>
                             <constraint firstItem="3JW-oV-Nfk" firstAttribute="centerX" secondItem="uM8-GG-GOX" secondAttribute="centerX" id="cwP-qE-9G1"/>
                             <constraint firstItem="uM8-GG-GOX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gVA-Qe-Xlx"/>
-                            <constraint firstItem="AbL-R4-ROL" firstAttribute="top" secondItem="3JW-oV-Nfk" secondAttribute="bottom" constant="7" id="hUP-hl-psu"/>
+                            <constraint firstItem="AbL-R4-ROL" firstAttribute="top" secondItem="3JW-oV-Nfk" secondAttribute="bottom" constant="8" id="gtP-UB-8OY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -67,11 +72,11 @@
             <objects>
                 <viewController storyboardIdentifier="SoundViewController" id="LWt-ZW-50z" customClass="SoundViewController" customModule="PitchPerfect" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gn6-z1-ETa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbE-9x-shU" userLabel="btnPause">
-                                <rect key="frame" x="155" y="301.5" width="64" height="64"/>
+                                <rect key="frame" x="208" y="128" width="64" height="64"/>
                                 <color key="backgroundColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="jru-ZH-Nwl"/>
@@ -83,7 +88,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zyv-PV-W5B">
-                                <rect key="frame" x="240" y="301.5" width="64" height="64"/>
+                                <rect key="frame" x="293" y="128" width="64" height="64"/>
                                 <color key="backgroundColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="btt-NJ-lwC"/>
@@ -96,7 +101,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qxb-TH-fjE">
-                                <rect key="frame" x="83" y="301.5" width="64" height="64"/>
+                                <rect key="frame" x="136" y="128" width="64" height="64"/>
                                 <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="HX1-I7-6r4"/>
@@ -110,7 +115,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Z1-xv-7j9">
-                                <rect key="frame" x="191" y="221.5" width="64" height="64"/>
+                                <rect key="frame" x="244" y="48" width="64" height="64"/>
                                 <color key="backgroundColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
                                 <state key="normal" image="fast2x-iphone"/>
                                 <connections>
@@ -118,7 +123,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6h-51-UmB" userLabel="btnSlow">
-                                <rect key="frame" x="101" y="221.5" width="64" height="64"/>
+                                <rect key="frame" x="154" y="48" width="64" height="64"/>
                                 <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="slow2x-iphone"/>
@@ -127,7 +132,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oK-Yi-357">
-                                <rect key="frame" x="191" y="370.5" width="64" height="64"/>
+                                <rect key="frame" x="244" y="197" width="64" height="64"/>
                                 <color key="backgroundColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                 <state key="normal" image="reverb"/>
                                 <connections>
@@ -135,7 +140,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEc-v0-R4R">
-                                <rect key="frame" x="116" y="373.5" width="64" height="64"/>
+                                <rect key="frame" x="169" y="200" width="64" height="64"/>
                                 <color key="backgroundColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                 <state key="normal" image="echo"/>
                                 <connections>
@@ -143,13 +148,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a sound filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVU-Po-P2g">
-                                <rect key="frame" x="124" y="188.5" width="127" height="17"/>
+                                <rect key="frame" x="176.5" y="15" width="127" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMn-Dk-rFW">
-                                <rect key="frame" x="122" y="452.5" width="130" height="30"/>
+                                <rect key="frame" x="175" y="279" width="130" height="30"/>
                                 <state key="normal" title="Record New sound">
                                     <color key="titleColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>

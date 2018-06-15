@@ -11,7 +11,7 @@ import UIKit
 import AVFoundation
 
 class SoundViewController:UIViewController, AVAudioPlayerDelegate{
-
+    
     var audioSession : AVAudioSession!
     
     var audioEngine: AVAudioEngine!
@@ -35,29 +35,29 @@ class SoundViewController:UIViewController, AVAudioPlayerDelegate{
         
     }
     
-  
+    
     @IBAction func playAsReverb(_ sender: Any) {
         
-         self.enablsControls(enable: false)
+        self.enablsControls(enable: false)
         playSound(reverb:true)
-       
+        
     }
     @IBAction func playAsEcho(_ sender: Any) {
         
-         self.enablsControls(enable: false)
+        self.enablsControls(enable: false)
         playSound(echo: true)
         
     }
     
     @IBAction func playAsChipmunk(_ sender: Any) {
-      
-         self.enablsControls(enable: false)
+        
+        self.enablsControls(enable: false)
         playSound(pitch: 1000)
-      
+        
     }
     @IBAction func playAsSlow(_ sender: Any) {
-       
-         self.enablsControls(enable: false)
+        
+        self.enablsControls(enable: false)
         playSound(rate: 0.5)
         
     }
@@ -75,22 +75,22 @@ class SoundViewController:UIViewController, AVAudioPlayerDelegate{
         
     }
     @IBAction func pausePlayer(_ sender: Any) {
-     
+        
         if (audioPlayerNode?.isPlaying == true){
             self.stopAudio()
-        configUI( isPlay: false)
+            configUI( isPlay: false)
         }else{
             self.playSound()
             enablsControls(enable: false)
-        configUI( isPlay: true)
+            configUI( isPlay: true)
         }
-       
+        
     }
     
     private func configUI( isPlay: Bool){
         if isPlay == true {
-             let image  = UIImage(named: "play_active")
-           
+            let image  = UIImage(named: "play_active")
+            
             btnPause.setImage(image, for: .normal)
             
         }else {
@@ -98,7 +98,7 @@ class SoundViewController:UIViewController, AVAudioPlayerDelegate{
             btnPause.setImage(image, for: .normal)
             
         }
-       
+        
     }
     
     private func prepareAudioPlayer( url:URL){
@@ -106,8 +106,8 @@ class SoundViewController:UIViewController, AVAudioPlayerDelegate{
             audioFile = try AVAudioFile(forReading : url)
         } catch {
             print(error)
-           
-          //  showAlert()
+            
+            //  showAlert()
         }
         
     }
@@ -143,22 +143,22 @@ class SoundViewController:UIViewController, AVAudioPlayerDelegate{
         }
         audioEngine.attach(changeRateNode)
         
-       let echoUnitNode = AVAudioUnitDistortion()
+        let echoUnitNode = AVAudioUnitDistortion()
         echoUnitNode.loadFactoryPreset(.multiEcho1)
         audioEngine.attach(echoUnitNode)
-    
+        
         let reverbNode = AVAudioUnitReverb()
-            reverbNode.loadFactoryPreset(.cathedral)
+        reverbNode.loadFactoryPreset(.cathedral)
         reverbNode.wetDryMix = 50
         audioEngine.attach(reverbNode)
         if  echo == true && reverb == true {
             connectAudioNodes(nodes: audioPlayerNode,changeRateNode,reverbNode,echoUnitNode,audioEngine.outputNode)
         }else if echo == true{
-              connectAudioNodes(nodes: audioPlayerNode,changeRateNode,echoUnitNode,audioEngine.outputNode)
+            connectAudioNodes(nodes: audioPlayerNode,changeRateNode,echoUnitNode,audioEngine.outputNode)
         }else if reverb == true{
-              connectAudioNodes(nodes: audioPlayerNode,changeRateNode,reverbNode,audioEngine.outputNode)
+            connectAudioNodes(nodes: audioPlayerNode,changeRateNode,reverbNode,audioEngine.outputNode)
         }else{
-              connectAudioNodes(nodes: audioPlayerNode,changeRateNode,audioEngine.outputNode)
+            connectAudioNodes(nodes: audioPlayerNode,changeRateNode,audioEngine.outputNode)
         }
         
         
@@ -171,7 +171,7 @@ class SoundViewController:UIViewController, AVAudioPlayerDelegate{
                 if let rate = rate {
                     delayInSeconds = Double(self.audioFile.length - playerTime.sampleTime) / Double(self.audioFile.processingFormat.sampleRate) / Double(rate)
                 }else {
-                       delayInSeconds = Double(self.audioFile.length - playerTime.sampleTime) / Double(self.audioFile.processingFormat.sampleRate)
+                    delayInSeconds = Double(self.audioFile.length - playerTime.sampleTime) / Double(self.audioFile.processingFormat.sampleRate)
                 }
             }
             
@@ -185,7 +185,7 @@ class SoundViewController:UIViewController, AVAudioPlayerDelegate{
         }catch{
             print(error)
         }
-            audioPlayerNode.play()
+        audioPlayerNode.play()
         configUI(isPlay: true)
     }
     
@@ -195,9 +195,9 @@ class SoundViewController:UIViewController, AVAudioPlayerDelegate{
             audioEngine.connect(nodes[x], to: nodes[x+1], format: audioFile.processingFormat)
         }
     }
-   
     
-  
+    
+    
     
     @objc func stopAudio(){
         enablsControls()
@@ -214,8 +214,8 @@ class SoundViewController:UIViewController, AVAudioPlayerDelegate{
         configUI(isPlay: false)
     }
     
-
+    
     @IBAction func newRecording(_ sender: Any) {
-      self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
